@@ -16,8 +16,7 @@ export class PokemonService {
   ) {}
 
   async create(createPokemonDto: CreatePokemonDto) {
-    const { name } = createPokemonDto;
-    name.toLocaleLowerCase();
+    createPokemonDto.name = createPokemonDto.name.toLocaleLowerCase();
 
     try {
       const pokemon = await this.pokemonModel.create(createPokemonDto);
