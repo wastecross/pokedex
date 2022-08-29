@@ -29,6 +29,6 @@ export class SeedService {
 
     await Promise.all(promises);
 
-    return data.results;
+    return 'Seed executed';
   }
 }
