@@ -14,15 +14,17 @@ export class SeedService {
   ) {}
 
   async executeSeed() {
+    await this.pokemonModel.deleteMany({});
+    const promises = [];
     const { data } = await this.axios.get<PokeResponse>(
       'https://pokeapi.co/api/v2/pokemon?limit=151',
     );
 
-    const promises = data.results.map(async ({ name, url }) => {
+    data.results.forEach(({ name, url }) => {
       const segments = url.split('/');
       const no: number = +segments[segments.length - 2];
 
-      await this.pokemonModel.create({ name, no });
+      promises.push(this.pokemonModel.create({ name, no }));
     });
 
     await Promise.all(promises);
