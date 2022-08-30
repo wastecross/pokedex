@@ -6,8 +6,7 @@ import { join } from 'path';
 import { PokemonModule } from './pokemon/pokemon.module';
 import { CommonModule } from './common/common.module';
 import { SeedModule } from './seed/seed.module';
-import { EnvConfiguration } from './config/env.config';
-import { JoiValidationSchema } from './config/joi.validation';
+import { EnvConfiguration, JoiValidationSchema } from './config';
 
 @Module({
   imports: [
@@ -21,7 +20,5 @@ import { JoiValidationSchema } from './config/joi.validation';
     CommonModule,
     SeedModule,
   ],
-  controllers: [],
-  providers: [],
 })
 export class AppModule {}
